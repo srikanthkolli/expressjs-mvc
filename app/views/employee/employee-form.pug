@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+  include ../top-header.pug
+  div.container-fluid
+    div.row
+      include ../sidebar.pug
+      div.col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+        form.form-horizontal(action="" method="post")
+          fieldset
+          legend Add Employee
+          div.form-group
+            label.col-md-4.control-label(for="first-name") First Name  
+            div.col-md-4
+              input#first-name.form-control.input-md(name="first-name" type="text" placeholder="Firt Name" value=empData.first_name)
+          div.form-group
+            label.col-md-4.control-label(for="last-name") Last Name
+            div.col-md-4
+              input#last-name.form-control.input-md(name="last-name" type="text" placeholder="Last Name" value= empData.last_name)
+          div.form-group
+            label.col-md-4.control-label(for="email") Email  
+            div.col-md-4
+              input#email.form-control.input-md(name="email" type="text" placeholder="Email" value= empData.email)
+          div.form-group
+            label.col-md-4.control-label(for="phone") Phone  
+            div.col-md-4
+              input#phone.form-control.input-md(name="phone" type="text" placeholder="Phone" value= empData.phone)
+          div.form-group
+            label.col-md-4.control-label(for="button1id")
+            div.col-md-8
+              button#button1id.btn.btn-success(name="button1id") Submit  
+              button#button2id.btn.btn-danger(name="button2id" type="button") Cancel

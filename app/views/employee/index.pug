@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+  include ../top-header.pug
+  div.container-fluid
+    div.row
+      include ../sidebar.pug
+      h2.sub-header Section title
+      div.col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+        a(href="/add-employee")
+            button.btn.btn-success Add Employee
+        div.table-responsive
+          table.table.table-striped
+            thead
+              tr
+                th #
+                th Emp ID
+                th First Name
+                th Last Name
+                th Phone
+                th(colspan="2") Action
+            tbody
+              each emp, idx in data
+                tr
+                  td= (idx + 1)
+                  td= emp.emp_id
+                  td= emp.first_name
+                  td= emp.last_name
+                  td= emp.phone
+                  td(colspan="2")
+                    a(href="/edit-employee/" + emp.emp_id) Edit | 
+                    a(href="/delete-employee/" + emp.emp_id) Delete

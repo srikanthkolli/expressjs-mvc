@@ -6,6 +6,7 @@ var employee = require('../app/controllers/employee');
 function authenticated(req, res, next) {
     console.log("req.user ------>", req.user);
     console.log("req.session ------>", req.session);
+    console.log("req.cookies  ------>", req.cookies);
     if (req.user) {
         next();
     } else {

@@ -4,6 +4,8 @@ var employee = require('../app/controllers/employee');
 
 // Authentication or Session check
 function authenticated(req, res, next) {
+    console.log("req.user ------>", req.user);
+    console.log("req.session ------>", req.session);
     if (req.user) {
         next();
     } else {

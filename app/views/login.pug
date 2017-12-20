@@ -1,18 +1,14 @@
 extends layout
 
 block content
-  <div class="container">
-    <form class="form-signin" method="post">
-      <h2 class="form-signin-heading">Please sign in</h2>
-      <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus name="username">
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required name="password">
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-      </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    </form>
-  </div>
+  div.container
+    form.form-signin(method="post")
+      h2.form-signin-heading Please sign in
+      label.sr-only(for="inputEmail") Email address
+      input#inputEmail.form-control(type="email" placeholder="Email address" required autofocus name="username")
+      label.sr-only(for="inputPassword") Password
+      input#inputPassword.form-control(type="password" placeholder="Password" required name="password")
+      div.checkbox
+        input(type="checkbox" value="remember-me", style="margin-left:0;")
+        label Remember me
+      button.btn.btn-lg.btn-primary.btn-block(type="submit") Sign in

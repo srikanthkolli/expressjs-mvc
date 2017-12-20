@@ -7,7 +7,7 @@ var _ = require('lodash');
 var Employee = function(){
 	this.list = function(req, res){
 		// List all the avb employes
-		Q.all(employeeModel.getAll()).done(function(result){
+		Q(employeeModel.getAll()).done(function(result){
 			if(result['status'] == 'ok'){
 				res.render(config.root + '/app/views/employee/index', { data: result['rows'] });
 			}else{
@@ -31,7 +31,7 @@ var Employee = function(){
 			dataToIns.push(req.body['email']);
 			dataToIns.push(moment().format("YYYY-MM-DD"));
 
-			Q.all(employeeModel.add(dataToIns)).done(function(result){
+			Q(employeeModel.add(dataToIns)).done(function(result){
 				if(result['status'] == 'ok'){
 					res.redirect('/employee/');
 				}else{
@@ -44,7 +44,7 @@ var Employee = function(){
 	this.editEmployee = function(req, res){
 		var empId = req.params['id'];
 		if(!_.isEmpty(empId)){
-			Q.all(employeeModel.get(empId)).done(function(result){
+			Q(employeeModel.get(empId)).done(function(result){
 				if(result['status'] == 'ok'){
 					console.log(result['row'][0]['first_name']);
 					res.render(config.root + '/app/views/employee/employee-form', { empData: result['row'][0] });
@@ -63,7 +63,7 @@ var Employee = function(){
 			dataToIns.push(req.body['phone']);
 			dataToIns.push(req.body['email']);
 
-			Q.all(employeeModel.update(dataToIns, req.params['id'])).done(function(result){
+			Q(employeeModel.update(dataToIns, req.params['id'])).done(function(result){
 				if(result['status'] == 'ok'){
 					res.redirect('/edit-employee/' + req.params['id']);
 				}else{
@@ -77,7 +77,7 @@ var Employee = function(){
 
 	this.deleteEmployee = function(req, res){
 		if(!_.isEmpty(req.params['id'])){
-			Q.all(employeeModel.delete(req.params['id'])).done(function(result){
+			Q(employeeModel.delete(req.params['id'])).done(function(result){
 				if(result['status'] == 'ok'){
 					res.redirect('/employee');
 				}else{

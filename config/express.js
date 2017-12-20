@@ -25,7 +25,7 @@ module.exports = function (app) {
 	/* Passport initialization */
 	passport.use(new Strategy(
 	  function(email, password, cb) {
-		Q.all(userModel.getByEmail(email)).done(function(result){
+		Q(userModel.getByEmail(email)).done(function(result){
 		  if(result['row'].length == 0 ) { return cb(null, false); }
 		  if (result["row"][0]["password"] != password) { return cb(null, false); }
 		  return cb(null, result["row"][0]);
@@ -41,7 +41,7 @@ module.exports = function (app) {
 	passport.deserializeUser(function(id, cb) {
 	 //using user id from serializeUser we will retrive user info
 	 // from DB and store it in req.user
-	  Q.all(userModel.get(id)).done(function(result){
+	  Q(userModel.get(id)).done(function(result){
 	  	console.log(id);
 	    if (result["row"].length == 0) { return cb(err); }
 	    cb(null, result["row"][0]);
